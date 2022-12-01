@@ -1,0 +1,9 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+ab_thresh|stem|b6a732e71cf44003|66d9ed357df49db5|ef46db3751d8e999|1322935744||t19327.6025238186s|c9aaea90a821e608|53|rds|local|vector|||0.001||
+campain_id|stem|ede018d4628cf1ce|11b073332028455e|ef46db3751d8e999|-271504171||t19327.5523942073s|710c4f02beb47ff7|57|rds|local|vector|||0.001||
+data_arms|function|f46157c20e311285|||||||||||||||
+data_split|function|40280a5d207e68cc|||||||||||||||
+metadata_data|stem|4b5befcdd65e91ef|1c4887c85fc6a0c5|79d3d98d82288bf4|970554103|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19327.5970037591s|5db6b48c626601ca|159740|file|local|vector|||0.134||
+raw_data|stem|5995ce3abb61818d|af6c01ae4d5d454c|ef46db3751d8e999|-979620141|data/raw-data/Data_sans_UNAV-NR-OROS.csv|t19327.5810118443s|8a9335efe74614cd|264586|file|local|vector|||0.002||
+split_clean_data_arms|function|fdd0d10748b8874b|||||||||||||||
+split_data|stem|35f1f55ee6f18d87|1c4887c85fc6a0c5|586542a16f9a8efb|1304765126|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19327.5836279162s|9ca6500e11936fd5|164930|file|local|vector|||0.148||

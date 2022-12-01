@@ -1,12 +1,12 @@
-setwd("~/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/Data/Pour NMDS")
-data=read.table(file = "Data_sans_UNAV-NR-OROS.csv", header=TRUE, sep=";", dec=",")
-#On ne selectionne que les ARMS issues de la campagne RUNA
-data=subset(data, data$Nom_ARMS=="RUNA")
+# setwd("~/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/Data/Pour NMDS")
+# data=read.table(file = "Data_sans_UNAV-NR-OROS.csv", header=TRUE, sep=";", dec=",")
+# #On ne selectionne que les ARMS issues de la campagne RUNA
+# data=subset(data, data$Nom_ARMS=="RUNA")
 #On créé une matrice Site/Espèce
-matrix=data[,20:ncol(data)]
+#matrix=data[,20:ncol(data)]
 #On retire toutes les espèce dont la somme des abondance est zero 
 #(les espèces qui n'ont pas été recensé dans cette campagne)
-matrix=matrix[ , colSums(matrix) != 0]
+#matrix=matrix[ , colSums(matrix) != 0]
 
 View(matrix)
 vec.2=c()
