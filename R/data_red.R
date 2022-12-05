@@ -1,7 +1,18 @@
-
+#' Subset a raw_data table for a sampling campain
+#'
+#' @param meta_and_data the path to the data or metadata 
+#' @param campain_id the id of the campain to use; could be RUNA/CINA/SALA/RODA
+#' @param ab_thresh the threshold; could be 99, 98,97... til 1
+#' 
+#'
+#' @return the path to the reduce data file, with the threshold u gave be4 
+#' 
+#'
 data_red <- function(meta_and_data, ab_thresh, campain_id) {
   
-  #meta_and_data <- targets::tar_read("metadata_data") ; targets::tar_load("ab_thresh") ; targets::tar_load("campain_id")
+  #meta_and_data <- targets::tar_read("metadata_data") 
+  #targets::tar_load("ab_thresh") 
+  #targets::tar_load("campain_id")
   
   
   # On créer un objet qui prend le fichier qui contient les data dans le chemin 

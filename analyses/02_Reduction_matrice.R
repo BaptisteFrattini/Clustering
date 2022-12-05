@@ -122,7 +122,7 @@ N=N[2:27]
 colnames(tab)=N
 View(tab)
 
-tab=as.data.frame(tab)
+tab=as.data.frame(tab) 
 
 setwd("~/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/Data/Matrice_Reduite_Souissi/V3")
 write.table(tab, file="ARMS_pool_red(10%).csv", sep=";",dec="," )

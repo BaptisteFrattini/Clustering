@@ -20,7 +20,8 @@ data_arms <- function(raw_data,
   
   dat <- data[data$prefixe == arms_id, ]
   
-  meta_names <- as.vector(colnames(dat[,c(1:20)]))
+  meta_names <- as.vector(colnames(dat[,c(1:19)]))
+
   
   meta_data <- dat[, meta_names]
   dat <- dat[, !(names(dat) %in% meta_names)]

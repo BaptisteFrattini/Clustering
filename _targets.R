@@ -11,4 +11,6 @@ list(
   ,tar_target(dattresh, data_red(meta_and_data = metadata_data, 
                                  ab_thresh = ab_thresh,
                                  campain_id = campain_id), format = "file")
+  ,tar_target(dattresh_arms, mean_by_arms(meta_and_data = metadata_data,
+                                          dat_thresh_path = dattresh), format = "file")
 )
