@@ -1,5 +1,5 @@
 
-data_split <- function(meta_and_data, ab_thresh, campain_id) {
+data_red <- function(meta_and_data, ab_thresh, campain_id) {
   
   #meta_and_data <- targets::tar_read("metadata_data") ; targets::tar_load("ab_thresh") ; targets::tar_load("campain_id")
   
@@ -24,10 +24,16 @@ data_split <- function(meta_and_data, ab_thresh, campain_id) {
   
   dat <- dat[, names(prop_zero)]
   
-  dat99 <- dat[, prop_zero < 99]
+  dat99 <- dat[, prop_zero < ab_thresh]
   
-return()
+  path_to_derived_data <- "data/derived-data"
+  dat_thresh_name <- paste0("dat", ab_thresh, ".csv")
+  dat_thresh_path <- here::here(path_to_derived_data, dat_thresh_name)
   
   
+  
+  write.csv(dat99, file = dat_thresh_path, row.names = FALSE)
+  
+return(dat_thresh_path)
   
 }
