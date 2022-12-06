@@ -1,6 +1,8 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 ab_thresh|stem|b6a732e71cf44003|66d9ed357df49db5|ef46db3751d8e999|1322935744||t19327.6025238186s|c9aaea90a821e608|53|rds|local|vector|||0.001||
 campain_id|stem|ede018d4628cf1ce|11b073332028455e|ef46db3751d8e999|-271504171||t19327.5523942073s|710c4f02beb47ff7|57|rds|local|vector|||0.001||
+clust_and_coph|stem||d232dc8b6bbe5d7f|4115e7a9440caf4d|1526930214||t19332.5696880721s||0|rds|local|vector|||1.306||can only print from a screen device
+clustering_and_cophenetic|function|79771c593b46d239|||||||||||||||
 data_arms|function|c7a51c47e865cbf1|||||||||||||||
 data_red|function|18e462d5316978af|||||||||||||||
 data_split|function|f8fb291fde240fe6|||||||||||||||

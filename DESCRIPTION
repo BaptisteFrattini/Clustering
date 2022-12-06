@@ -19,4 +19,8 @@ RoxygenNote: 7.2.2
 Imports:
   targets,
   visNetwork,
-  dplyr  
+  dplyr,
+  vegan,
+  stats,
+  clue
+  

@@ -9,7 +9,7 @@
 
 # dependences management
 
-# renv::init()
+renv::init()
 renv::install()
 renv::status()
 renv::snapshot()

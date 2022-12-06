@@ -14,4 +14,6 @@ list(
   ,tar_target(dattresh_arms, mean_by_arms(meta_and_data = metadata_data,
                                           dat_thresh_path = dattresh,
                                           ab_thresh = ab_thresh), format = "file")
+  ,tar_target(clust_and_coph, clustering_and_cophenetic(dat_thresh_red_path = dattresh_arms,
+                                                        ab_thresh = ab_thresh))
 )
