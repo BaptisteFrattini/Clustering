@@ -19,7 +19,11 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh) {
   matrix.dist = vegan::vegdist(matrix.hel)
   cluster.UPGMA <- hclust(matrix.dist, method = "average")
   
+  clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_UPGMA.png")
+  clust_and_coph_path <- here::here("outputs", clust_and_coph_name)
   
+  
+  png(file =  clust_and_coph_path)
   par(mfrow = c(1, 2))
   #first plot
   plot1 <- plot(cluster.UPGMA,
@@ -44,11 +48,10 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh) {
            panel.first = abline(0, 1),
            main = paste("Cophenetic correlation =", round(cor(matrix.dist, spe.ch.UPGMA.coph), 3), "\n 2-norm = ", round(dnorm,3)))
   
+  dev.off()
+ 
   
-  clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_UPGMA")
-  clust_and_coph_path <- here::here("outputs", clust_and_coph_name)
-  
-  return(plot1)
+  return(clust_and_coph_path)
   
   
 }
