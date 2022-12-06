@@ -22,5 +22,7 @@ Imports:
   dplyr,
   vegan,
   stats,
-  clue
+  clue,
+  ggplot2
+  
   
