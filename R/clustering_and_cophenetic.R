@@ -7,8 +7,8 @@
 #' @export
 #'
 
-clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh) {
-  
+clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis) {
+  #braycurtis = targets::tar_read(braycurtis)
   #dat_thresh_red_path = targets::tar_read(dattresh_arms)
   #ab_thresh = targets::tar_load("ab_thresh") 
   
@@ -19,23 +19,43 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh) {
   matrix.dist = vegan::vegdist(matrix.hel)
   cluster.UPGMA <- hclust(matrix.dist, method = "average")
   
-  
-  
-  
   clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_UPGMA.pdf")
   clust_and_coph_path <- here::here("outputs", clust_and_coph_name)
   
-  
-  pdf(file =  clust_and_coph_path, width = 11, height = 7)
+  pdf(file =  clust_and_coph_path, width = 12, height = 6)
   par(mfrow = c(1, 2))
+  
   #first plot
-  plot1 <- plot(cluster.UPGMA,
-           labels = row.names(dat_thresh_red_path),
-           main = paste0("Clustering avec ", ncol(dat_thresh_red_path)," sp (thresh = ", ab_thresh, " ; method = UPGMA)"), cex = 1)
+  #custom dist computing for pvclust (does not recognize b-c distance)
+  braycurtis <- function(x) {
+    x <- as.matrix(x)
+    x <- t(x)
+    res <- vegan::vegdist(x)
+    res <- as.dist(res)
+    attr(res, "method") <- "braycurtis"
+    return(res)
+  }
+  
+  
+  
+  plot0 <- pvclust::pvclust(t(matrix.hel),
+                      method.hclust = "average",
+                      method.dist = braycurtis,
+                      parallel = TRUE)
+  plot(plot0)
+  
+  # dendextend::pvrect2(plot0, alpha = 0.90, pv = "au", xpd = FALSE) 
+  # Unbiased p-val = red
+  # Bootstrap probability = green
+  
+  #plot1 <- plot(cluster.UPGMA,
+   #        labels = row.names(dat_thresh_red_path),
+    #       main = paste0("Clustering avec ", ncol(dat_thresh_red_path)," sp (thresh = ", ab_thresh, " ; method = UPGMA)"), cex = 1)
  
   # Average clustering
   spe.ch.UPGMA.coph <- stats::cophenetic(cluster.UPGMA)
   cor(matrix.dist, spe.ch.UPGMA.coph)
+  
   ## 2-norm value ##
   dnorm <- clue::cl_dissimilarity(matrix.dist,
                    cluster.UPGMA,
@@ -58,12 +78,6 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh) {
   
   
 }
-
-## avec GGPLOT
-
-
-
-
 
 
 

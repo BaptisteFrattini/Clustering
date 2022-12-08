@@ -23,6 +23,6 @@ Imports:
   vegan,
   stats,
   clue,
-  ggplot2
-  
+  ggplot2,
+  pvclust
   
