@@ -4,8 +4,8 @@
 #
 ############################################################
 
-#source("analyses/01_Data_RUNA")
-
+#fisrt run, use this : 
+#install.packages(renv)
 
 # dependences management
 
