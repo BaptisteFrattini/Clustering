@@ -8,8 +8,7 @@ Authors@R: c(
            role    = c("aut", "cre", "cph"),
            email   = "baptiste.frattini22@gmail.com",
            comment = c(ORCID = "")))
-Description: A paragraph providing a full description of the project (on 
-    several lines...)
+Description: A reproductible script to analyse abundance sites-species matrix by clustering and compute indicator species values.
 URL: https://github.com/BaptisteFrattini/Clustering
 BugReports: https://github.com/BaptisteFrattini/Clustering/issues
 License: GPL-2
@@ -24,5 +23,6 @@ Imports:
   stats,
   clue,
   ggplot2,
-  pvclust
+  pvclust,
+  labdsv
   
