@@ -1,17 +1,19 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-ab_thresh|stem|b6a732e71cf44003|66d9ed357df49db5|ef46db3751d8e999|1322935744||t19334.4622949012s|c9aaea90a821e608|53|rds|local|vector|||0.001||
+ab_thresh|stem|b6a732e71cf44003|66d9ed357df49db5|ef46db3751d8e999|1322935744||t19335.5862241198s|c9aaea90a821e608|53|rds|local|vector|||0.001||
 bc|stem||965e67cfc9a62ae3|0418a9abf87456be|-402398867||t19334.6318256543s||0|rds|local|vector|||1.022||input data must be numeric
 braycurtis|function|b9d9080049c916ea|||||||||||||||
-campain_id|stem|ede018d4628cf1ce|11b073332028455e|ef46db3751d8e999|-271504171||t19327.5523942073s|710c4f02beb47ff7|57|rds|local|vector|||0.001||
-clust_and_coph|stem|f8a954ab20440c39|fe69d33aad20c226|0c1cc0a5594e5175|1526930214||t19334.6778753885s|23cbc8442f78eae6|173|rds|local|vector|||8.595||
-clustering_and_cophenetic|function|eee626f8d3c5a34a|||||||||||||||
+campain_id|stem|ede018d4628cf1ce|11b073332028455e|ef46db3751d8e999|-271504171||t19335.5699451679s|710c4f02beb47ff7|57|rds|local|vector|||0.002||
+clust_and_coph|stem|3f2fd046180ca20b|9f06d497d0984872|c8394e0432fc4a1f|1526930214||t19335.5863247404s|53c93953a72b96c1|178|rds|local|vector|||8.53||
+clust_method|stem|2ba14abda232af15|72ba32dbedf0968d|ef46db3751d8e999|-1679389730||t19335.5585862321s|a44f74ecaf054496|60|rds|local|vector|||0.001||
+clustering_and_cophenetic|function|397472b2ea38036c|||||||||||||||
 data_arms|function|c7a51c47e865cbf1|||||||||||||||
-data_red|function|18e462d5316978af|||||||||||||||
+data_red|function|1db6883e9a9f3d4b|||||||||||||||
 data_split|function|f8fb291fde240fe6|||||||||||||||
-dattresh|stem|ee5f25fc59145ab5|86fc49a1074550ba|b67b2b34c2614d4c|1137551375|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/dat99.csv|t19334.4622959606s|effa7704aec8d18c|70813|file|local|vector|||0.071||
-dattresh_arms|stem|3c32fc941b9905bc|4c18ad8e078c4fde|b46cc2e74b7fd255|1615157627|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/dat_red_99.csv|t19334.4622967358s|7dfd05429c314150|10928|file|local|vector|||0.056||
+dattresh|stem|ee5f25fc59145ab5|fc0d8e39b4a414cd|0f3e94067bf1ba4f|1137551375|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/dat99.csv|t19335.5862251707s|effa7704aec8d18c|70813|file|local|vector|||0.072||
+dattresh_arms|stem|99b261594ac1aaeb|4c18ad8e078c4fde|a0aeab265c9753d1|1615157627|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/dat_red_95.csv|t19335.575945766s|bcd9108a1a8caabb|7783|file|local|vector|||0.036||
+mean_arms|stem|3c32fc941b9905bc|4c18ad8e078c4fde|b46cc2e74b7fd255|-2043351993|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/dat_red_99.csv|t19335.5862259102s|7dfd05429c314150|10928|file|local|vector|||0.057||
 mean_by_arms|function|2b4e790eb3beb461|||||||||||||||
-metadata_data|stem|43be0c959946196f|1c4887c85fc6a0c5|accb28ec16245fda|970554103|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19331.645982131s|c9688d1d02335676|159721|file|local|vector|||0.089||
+metadata_data|stem|43be0c959946196f|1c4887c85fc6a0c5|accb28ec16245fda|970554103|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19335.5754212446s|c9688d1d02335676|159721|file|local|vector|||0.107||
 raw_data|stem|33f334a85117b0fc|af6c01ae4d5d454c|ef46db3751d8e999|-979620141|data/raw-data/Data_sans_UNAV-NR-OROS.csv|t19331.4598317597s|0c90ceb87a940184|265323|file|local|vector|||0.001||
 split_clean_data_arms|function|fdd0d10748b8874b|||||||||||||||
 split_data|stem|35f1f55ee6f18d87|1c4887c85fc6a0c5|586542a16f9a8efb|1304765126|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19327.5836279162s|9ca6500e11936fd5|164930|file|local|vector|||0.148||

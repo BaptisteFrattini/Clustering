@@ -7,7 +7,7 @@
 #' @export
 #'
 
-clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis) {
+clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis, method_c, arms_id) {
   #braycurtis = targets::tar_read(braycurtis)
   #dat_thresh_red_path = targets::tar_read(dattresh_arms)
   #ab_thresh = targets::tar_load("ab_thresh") 
@@ -17,9 +17,9 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis)
                                   row.names = 1)
   matrix.hel = vegan::decostand(dat_thresh_red_path, "hellinger")
   matrix.dist = vegan::vegdist(matrix.hel)
-  cluster.UPGMA <- hclust(matrix.dist, method = "average")
+  cluster <- hclust(matrix.dist, method = method_c)
   
-  clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_UPGMA.pdf")
+  clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_", method_c,"_", arms_id, ".pdf")
   clust_and_coph_path <- here::here("outputs", clust_and_coph_name)
   
   pdf(file =  clust_and_coph_path, width = 12, height = 6)
@@ -37,7 +37,7 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis)
   }
   
   plot0 <- pvclust::pvclust(t(matrix.hel),
-                      method.hclust = "average",
+                      method.hclust = method_c,
                       method.dist = braycurtis,
                       parallel = TRUE)
   plot(plot0)
@@ -45,28 +45,28 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis)
   # Unbiased p-val = red
   # Bootstrap probability = green
   
-  #plot1 <- plot(cluster.UPGMA,
+  #plot1 <- plot(cluster,
     #       labels = row.names(dat_thresh_red_path)
-    #       main = paste0("Clustering avec ", ncol(dat_thresh_red_path)," sp (thresh = ", ab_thresh, " ; method = UPGMA)"), cex = 1)
+    #       main = paste0("Clustering avec ", ncol(dat_thresh_red_path)," sp (thresh = ", ab_thresh, " ; method = method_c)"), cex = 1)
  
   # Cophenetic correlation computing
-  spe.ch.UPGMA.coph <- stats::cophenetic(cluster.UPGMA)
-  cor(matrix.dist, spe.ch.UPGMA.coph)
+  coph <- stats::cophenetic(cluster)
+  cor(matrix.dist, coph)
   
   # 2-norm value computing
   dnorm <- clue::cl_dissimilarity(matrix.dist,
-                   cluster.UPGMA,
+                   cluster,
                    method = "spectral")    
   
   # plot the graph of the correlation
-  plot2 <- plot(matrix.dist,spe.ch.UPGMA.coph,
-           xlab = "UPGMA distance",
+  plot2 <- plot(matrix.dist,coph,
+           xlab = paste0("distance cophenetique (", method_c,")"),
            ylab = "Cophenetic distance",
            asp = 1,
            xlim = c(0.1, 0.5),
            ylim = c(0.1, 0.4),
            panel.first = abline(0, 1),
-           main = paste("Cophenetic correlation =", round(cor(matrix.dist, spe.ch.UPGMA.coph), 3), "\n 2-norm = ", round(dnorm,3)))
+           main = paste("Cophenetic correlation =", round(cor(matrix.dist, coph), 3), "\n 2-norm = ", round(dnorm,3)))
 
   dev.off()
  
