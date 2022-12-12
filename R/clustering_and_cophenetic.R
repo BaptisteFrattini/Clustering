@@ -7,7 +7,7 @@
 #' @export
 #'
 
-clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis, method_c, arms_id) {
+clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   #braycurtis = targets::tar_read(braycurtis)
   #dat_thresh_red_path = targets::tar_read(dattresh_arms)
   #ab_thresh = targets::tar_load("ab_thresh") 
@@ -60,7 +60,7 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh,braycurtis,
   
   # plot the graph of the correlation
   plot2 <- plot(matrix.dist,coph,
-           xlab = paste0("distance cophenetique (", method_c,")"),
+           xlab = paste0("distance  de ", method_c),
            ylab = "Cophenetic distance",
            asp = 1,
            xlim = c(0.1, 0.5),
