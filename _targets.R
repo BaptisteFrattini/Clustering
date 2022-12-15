@@ -9,7 +9,7 @@ list(
   
   ,tar_target(metadata_data, data_arms(raw_data = raw_data, 
                                        arms_id = campain_id), format = "file")
-  ,tar_target(ab_thresh, 99)
+  ,tar_target(ab_thresh, 95)
   
   ,tar_target(dattresh, data_red(meta_and_data = metadata_data, 
                                  ab_thresh = ab_thresh), format = "file")
@@ -27,4 +27,8 @@ list(
                                                         method_c = clust_method,
                                                         arms_id = campain_id))
   ,tar_target(indval, indic_spe(meta_and_data = metadata_data))
+  
+  ,tar_target(loop_clust, loop(meta_and_data = metadata_data,
+                         method_c = clust_method,
+                         arms_id = campain_id))
 )
