@@ -15,6 +15,7 @@ loop <- function(meta_and_data, method_c, arms_id) {
   #method_c = targets::tar_load("clust_method") 
   #arms_id = targets::tar_load("campain_id")   
   
+  
   df <- NULL
   c <- NULL
   dnorm <- NULL
@@ -22,6 +23,7 @@ loop <- function(meta_and_data, method_c, arms_id) {
   n_clust <- NULL
   penalty_min <- NULL
   n_clust_sil <- NULL
+  perc_zero <- NULL
   
   for (i in 50:100) {
     
@@ -55,15 +57,6 @@ loop <- function(meta_and_data, method_c, arms_id) {
     colnames(tab) <- N
     tab <- as.data.frame(tab)
     
-    braycurtis <- function(x) {
-      x <- as.matrix(x)
-      x <- t(x)
-      res <- vegan::vegdist(x)
-      res <- as.dist(res)
-      attr(res, "method") <- "braycurtis"
-      return(res)
-    }
-    
     matrix.hel = vegan::decostand(tab, "hellinger")
     matrix.dist = vegan::vegdist(matrix.hel)
     
@@ -91,11 +84,15 @@ loop <- function(meta_and_data, method_c, arms_id) {
     penalty_min[i] <- names(penalty[1])
     
     n_clust_sil[i] <- obj$Best.nc
+    
+    t <- ncol(matrix.hel)*nrow(matrix.hel)
+    s <- sum(matrix.hel == 0)
+    perc_zero[i] <- (s/t)*100
     #sil <- factoextra::fviz_nbclust(obj, method = "silhouette")
 
   }
   
-  df <- cbind(c, dnorm, n_sp, n_clust_sil, penalty_min)
+  df <- cbind(c, dnorm, n_sp, n_clust_sil, penalty_min, perc_zero)
   df <- df[50:100,]
   thresh <- c(50:100)
   df <- cbind(thresh,df)
@@ -124,10 +121,10 @@ loop <- function(meta_and_data, method_c, arms_id) {
        ylab = "c",
        las = 1,
        cex.axis = 0.5)
-  abline(h = min(df$c), col = "blue")
-  abline(v = 94, col = "blue")
-  axis(1, at = c(94),labels = c("94"), las = 1)
-  axis(2, at = 0.6107368, labels = "0.61", las = 1)
+  #abline(h = min(df$c), col = "blue")
+  #abline(v = 94, col = "blue")
+  #axis(1, at = c(94),labels = c("94"), las = 1)
+  #axis(2, at = 0.6107368, labels = "0.61", las = 1)
   plot(df$dnorm~df$thresh, 
        type = "l",
        main = paste0("Indice 2-norm en fonction du threshold - \n", method_c,

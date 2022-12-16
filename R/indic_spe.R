@@ -57,7 +57,7 @@ indic_spe <- function(meta_and_data) {
   fidg.1 <- fidg.1[order(fidg.1$name),]
   
   write.table(fidg.1, 
-              file = "outputs/df_indval.1.csv", 
+              file = "outputs/df_indval.un.csv", 
               dec = ",", 
               sep = ";",
               row.names = FALSE)
@@ -78,7 +78,7 @@ indic_spe <- function(meta_and_data) {
   fidg.2 <- fidg.2[order(fidg.2$name),]
 
   write.table(fidg.2, 
-              file = "outputs/df_indval.2.csv", 
+              file = "outputs/df_indval.deux.csv", 
               dec = ",", 
               sep = ";",
               row.names = FALSE)

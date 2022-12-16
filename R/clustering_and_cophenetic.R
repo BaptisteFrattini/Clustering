@@ -25,6 +25,7 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
   clust_and_coph_name <- paste0("clust_and_coph_", ab_thresh, "_", method_c,"_", arms_id, ".pdf")
   clust_and_coph_path <- here::here("outputs", clust_and_coph_name)
   
+  
   pdf(file =  clust_and_coph_path, width = 12, height = 6)
   par(mfrow = c(1, 2))
   

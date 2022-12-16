@@ -20,6 +20,7 @@ data_arms <- function(raw_data,
   
   dat <- data[data$prefixe == arms_id, ]
   
+  
   meta_names <- as.vector(colnames(dat[,c(1:19)]))
 
   
