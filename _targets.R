@@ -29,6 +29,6 @@ list(
   ,tar_target(indval, indic_spe(meta_and_data = metadata_data))
   
   ,tar_target(loop_clust, loop(meta_and_data = metadata_data,
-                         method_c = clust_method,
-                         arms_id = campain_id))
+                               method_c = clust_method,
+                               arms_id = campain_id))
 )

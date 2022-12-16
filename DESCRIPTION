@@ -28,6 +28,7 @@ Imports:
   labdsv,
   factoextra,
   cluster,
-  NbClust
+  NbClust,
+  maptree
   
   

@@ -816,6 +816,17 @@
       "Hash": "7ce2733a9826b3aeb1775d56fd305472",
       "Requirements": []
     },
+    "maptree": {
+      "Package": "maptree",
+      "Version": "1.4-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "31529e320177e8cede28e351f87368de",
+      "Requirements": [
+        "cluster",
+        "rpart"
+      ]
+    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.8-41",
@@ -1093,6 +1104,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "4ed1f8336c8d52c3e750adcdc57228a7",
+      "Requirements": []
+    },
+    "rpart": {
+      "Package": "rpart",
+      "Version": "4.1.19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b3c892a81783376cc2204af0f5805a80",
       "Requirements": []
     },
     "rprojroot": {

@@ -1,6 +1,8 @@
 #' boucle qui donne les valeurs de c; 2-norm; nombre d'espèce, sihouette, et clustering 
 #'
 #' @param meta_and_data path to meta data and data
+#' @param method_c clustering algorithm
+#' @param arms_id sampling campain id
 #' 
 #'
 #' @return df wth all the compute values 
@@ -18,8 +20,11 @@ loop <- function(meta_and_data, method_c, arms_id) {
   dnorm <- NULL
   n_sp <- NULL
   n_clust <- NULL
+  penalty_min <- NULL
+  n_clust_sil <- NULL
   
   for (i in 50:100) {
+    
     data_path <- meta_and_data[!grepl("metadata", meta_and_data)]  
     dat <- read.csv(data_path)
     prop_zero <- unlist(lapply(dat, function(c) {
@@ -32,7 +37,6 @@ loop <- function(meta_and_data, method_c, arms_id) {
     meta_path <- meta_and_data[grepl("metadata", meta_and_data)] 
     meta <- read.csv(meta_path)
     arms_name <- meta$arms_name
-    
     
     tab <- NULL
     U <- NULL
@@ -76,14 +80,22 @@ loop <- function(meta_and_data, method_c, arms_id) {
                             distance = NULL, 
                             method = method_c, 
                             index = "silhouette", 
-                            min.nc = 1, 
+                            min.nc = 2, 
                             max.nc = 26)
-    n_clust[i] <- obj$Best.nc
+    
+    penalty <- maptree::kgs(cluster = cluster, 
+                            diss = matrix.dist, 
+                            maxclust = 26)
+    penalty <- sort(penalty)
+    
+    penalty_min[i] <- names(penalty[1])
+    
+    n_clust_sil[i] <- obj$Best.nc
     #sil <- factoextra::fviz_nbclust(obj, method = "silhouette")
 
   }
   
-  df <- cbind(c, dnorm, n_sp, n_clust)
+  df <- cbind(c, dnorm, n_sp, n_clust_sil, penalty_min)
   df <- df[50:100,]
   thresh <- c(50:100)
   df <- cbind(thresh,df)
