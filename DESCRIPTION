@@ -29,6 +29,11 @@ Imports:
   factoextra,
   cluster,
   NbClust,
-  maptree
+  maptree,
+  plyr,
+  FactoMineR,
+  gclus,
+  sets
+  
   
   

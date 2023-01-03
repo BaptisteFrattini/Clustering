@@ -9,7 +9,7 @@ list(
   
   ,tar_target(metadata_data, data_arms(raw_data = raw_data, 
                                        arms_id = campain_id), format = "file")
-  ,tar_target(ab_thresh, 97)
+  ,tar_target(ab_thresh, 99)
   
   ,tar_target(dattresh, data_red(meta_and_data = metadata_data, 
                                  ab_thresh = ab_thresh), format = "file")
@@ -31,4 +31,8 @@ list(
   ,tar_target(loop_clust, loop(meta_and_data = metadata_data,
                                method_c = clust_method,
                                arms_id = campain_id))
+  
+  ,tar_target(pwa, pw_adonis(dat_thresh_red_path = mean_arms,
+                             ab_thresh = ab_thresh,
+                             arms_id = campain_id))
 )

@@ -45,13 +45,11 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
                       method.dist = braycurtis,
                       parallel = TRUE)
   plot(plot0)
-  
+
   # Unbiased p-val = red
   # Bootstrap probability = green
   
-  #plot1 <- plot(cluster,
-    #       labels = row.names(dat_thresh_red_path)
-    #       main = paste0("Clustering avec ", ncol(dat_thresh_red_path)," sp (thresh = ", ab_thresh, " ; method = method_c)"), cex = 1)
+  
  
   # Cophenetic correlation computing
   coph <- stats::cophenetic(cluster)
@@ -73,7 +71,43 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
            main = paste("Cophenetic correlation =", round(cor(matrix.dist, coph), 3), "\n 2-norm = ", round(dnorm,3)))
 
   dev.off()
- 
+  #plot a clean dendrogram
+  
+  cluster <- hclust(matrix.dist, method = method_c)
+  plot1 <- gclus::reorder.hclust(cluster,
+                                 labels = row.names(dat_thresh_red_path),
+                                 dis = matrix.dist, 
+                                 maxclust = 26)
+  
+  penalty <- maptree::kgs(cluster = cluster, 
+                          diss = matrix.dist, 
+                          maxclust = 26)
+  penalty <- sort(penalty)
+  
+  penalty_min <- as.numeric(names(penalty[1]))
+  
+  clean_clust_name <- paste0("clean_clust_", ab_thresh, "_", method_c,"_", arms_id, ".pdf")
+  clean_clust_path <- here::here("outputs", clean_clust_name)
+  
+  
+  pdf(file =  clean_clust_path, width = 8, height = 6)
+  
+  plot(plot1,
+       hang = 0.2,
+       xlab = paste0("Optimal number of clusters = ", penalty_min),
+       sub = "",
+       ylab = "Height",
+       main = paste0("Clustering avec ",
+                     ncol(dat_thresh_red_path),
+                     " sp (thresh = ", as.numeric(ab_thresh),
+                     " ; method = ",
+                     method_c,")"), 
+       labels = row.names(dat_thresh_red_path))
+  
+  dev.off()
+
+
+  
   
   return(clust_and_coph_path)
 }

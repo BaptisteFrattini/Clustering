@@ -14,8 +14,8 @@ loop <- function(meta_and_data, method_c, arms_id) {
   #meta_and_data = targets::tar_read("metadata_data")
   #method_c = targets::tar_load("clust_method") 
   #arms_id = targets::tar_load("campain_id")   
-  
-  
+ 
+  commun_comp <- NULL
   df <- NULL
   c <- NULL
   dnorm <- NULL
@@ -90,7 +90,19 @@ loop <- function(meta_and_data, method_c, arms_id) {
     perc_zero[i] <- (s/t)*100
     #sil <- factoextra::fviz_nbclust(obj, method = "silhouette")
 
+    commun_comp[[i]] <- as.data.frame(names(dat))
+    
   }
+
+  a <- NULL
+  
+  for (w in 50:100) {
+    a <- plyr::rbind.fill(a, as.data.frame(t(commun_comp[[w]])))
+  }
+  View(a)
+  
+  df2 <- cbind(c(50:100), a) 
+ 
   
   df <- cbind(c, dnorm, n_sp, n_clust_sil, penalty_min, perc_zero)
   df <- df[50:100,]
@@ -104,6 +116,13 @@ loop <- function(meta_and_data, method_c, arms_id) {
               sep = ";",
               row.names = FALSE)
   
+
+  
+  write.table(df2, 
+              file = paste0("outputs/df(sp)_loop_", method_c, "_", arms_id, ".csv"),
+              dec = ",", 
+              sep = ";",
+              row.names = FALSE)
   
   loop_name <- paste0("loop", "_", method_c,"_", arms_id, ".pdf")
   

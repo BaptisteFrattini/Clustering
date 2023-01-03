@@ -27,10 +27,10 @@
     },
     "FactoMineR": {
       "Package": "FactoMineR",
-      "Version": "2.6",
+      "Version": "2.7",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "03f1e6e9bd17ae7866ec4a826a985007",
+      "Hash": "8c0baf46ca589004dcea8bad47e7bc84",
       "Requirements": [
         "DT",
         "MASS",
@@ -508,6 +508,16 @@
       "Repository": "CRAN",
       "Hash": "7c89603d81793f0d5486d91ab1fc6f1d",
       "Requirements": []
+    },
+    "gclus": {
+      "Package": "gclus",
+      "Version": "1.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "8f905e7f70ac42e5b0e39d6ba360dd44",
+      "Requirements": [
+        "cluster"
+      ]
     },
     "generics": {
       "Package": "generics",
@@ -1165,6 +1175,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "fcdda5020cea741880b22d974a7e4d86",
+      "Requirements": []
+    },
+    "sets": {
+      "Package": "sets",
+      "Version": "1.0-21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "90dce9dceb9e0bf75e244cf7c60a8604",
       "Requirements": []
     },
     "stringi": {
