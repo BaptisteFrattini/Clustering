@@ -9,8 +9,6 @@
 
 # dependences management
 
-
-
 renv::init()
 renv::install()
 renv::status()
