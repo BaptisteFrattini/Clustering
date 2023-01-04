@@ -11,7 +11,7 @@
 mean_by_arms <- function(meta_and_data, dat_thresh_path, ab_thresh) {
   
   #meta_and_data = targets::tar_read("metadata_data") 
-  #targets::tar_load("ab_thresh") 
+  #ab_thresh <- targets::tar_load("ab_thresh") 
   #dat_thresh_path = targets::tar_read("dattresh")
   
   

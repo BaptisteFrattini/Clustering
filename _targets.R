@@ -9,7 +9,7 @@ list(
   
   ,tar_target(metadata_data, data_arms(raw_data = raw_data, 
                                        arms_id = campain_id), format = "file")
-  ,tar_target(ab_thresh, 99)
+  ,tar_target(ab_thresh, 95)
   
   ,tar_target(dattresh, data_red(meta_and_data = metadata_data, 
                                  ab_thresh = ab_thresh), format = "file")

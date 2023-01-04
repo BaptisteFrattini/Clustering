@@ -10,7 +10,7 @@
 
 clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
 
-  #dat_thresh_red_path = targets::tar_read(dattresh_arms)
+  #dat_thresh_red_path = targets::tar_read(mean_arms)
   #ab_thresh = targets::tar_load("ab_thresh") 
   #method_c = targets::tar_load("clust_method") 
   #arms_id = targets::tar_load("campain_id") 
@@ -73,13 +73,13 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
   dev.off()
   #plot a clean dendrogram
   
-  cluster <- hclust(matrix.dist, method = method_c)
-  plot1 <- gclus::reorder.hclust(cluster,
+  hc <- hclust(matrix.dist, method = method_c)
+  plot1 <- gclus::reorder.hclust(hc,
                                  labels = row.names(dat_thresh_red_path),
                                  dis = matrix.dist, 
                                  maxclust = 26)
-  
-  penalty <- maptree::kgs(cluster = cluster, 
+
+  penalty <- maptree::kgs(cluster = hc, 
                           diss = matrix.dist, 
                           maxclust = 26)
   penalty <- sort(penalty)
@@ -89,23 +89,37 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
   clean_clust_name <- paste0("clean_clust_", ab_thresh, "_", method_c,"_", arms_id, ".pdf")
   clean_clust_path <- here::here("outputs", clean_clust_name)
   
+
   
-  pdf(file =  clean_clust_path, width = 8, height = 6)
   
-  plot(plot1,
-       hang = 0.2,
-       xlab = paste0("Optimal number of clusters = ", penalty_min),
-       sub = "",
-       ylab = "Height",
-       main = paste0("Clustering avec ",
+  library(ggplot2)
+  library(ggdendro)
+  
+  #convert cluster object to use with ggplot
+  dendr <- ggdendro::dendro_data(hc, type="rectangle") 
+  
+  clust    <- cutree(hc,k=penalty_min)                    # find 2 clusters
+  clust.df <- data.frame(label=names(clust), cluster=factor(clust))
+  #dendr[["labels"]] has the labels, merge with clust.df based on label column
+  dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+  
+ aa <- ggplot() + 
+    geom_segment(data=segment(dendr), aes(x=x, y=y, xend=xend, yend=yend)) + 
+    geom_text(data=label(dendr), aes(x, y, label=label, hjust=-0.5, color=cluster)) +
+    coord_flip() + scale_y_reverse(expand=c(0.2, 0)) + 
+    theme(axis.line.y=element_blank(),
+          axis.ticks.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.title.y=element_blank(),
+          panel.background=element_rect(fill="white"),
+          panel.grid=element_blank()) + ggtitle(paste0("Clustering avec ",
                      ncol(dat_thresh_red_path),
                      " sp (thresh = ", as.numeric(ab_thresh),
                      " ; method = ",
-                     method_c,")"), 
-       labels = row.names(dat_thresh_red_path))
+                     method_c,")"))
   
-  dev.off()
-
+  
+ ggsave(clean_clust_path, aa, width = 6, height = 8)
 
   
   
