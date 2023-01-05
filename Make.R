@@ -13,7 +13,7 @@ renv::init()
 renv::install()
 renv::status()
 renv::snapshot()
-
+renv::restore()
 
 # make the pipeline
 targets::tar_visnetwork()
