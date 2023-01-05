@@ -10,7 +10,7 @@
 data_red <- function(meta_and_data, ab_thresh) {
   
   #meta_and_data <- targets::tar_read("metadata_data") 
-  #targets::tar_load("ab_thresh") 
+  #ab_thresh <- targets::tar_load("ab_thresh") 
   
   
   # On créer un objet qui prend le fichier qui contient les data dans le chemin 

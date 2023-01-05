@@ -88,10 +88,7 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
   
   clean_clust_name <- paste0("clean_clust_", ab_thresh, "_", method_c,"_", arms_id, ".pdf")
   clean_clust_path <- here::here("outputs", clean_clust_name)
-  
 
-  
-  
   library(ggplot2)
   library(ggdendro)
   
@@ -105,7 +102,8 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
   
  aa <- ggplot() + 
     geom_segment(data=segment(dendr), aes(x=x, y=y, xend=xend, yend=yend)) + 
-    geom_text(data=label(dendr), aes(x, y, label=label, hjust=-0.5, color=cluster)) +
+    geom_text(data=label(dendr), aes(x, y, label=label, hjust=-0.16, color=cluster)) +
+    scale_colour_brewer("Clusters", palette = "Set1") +
     coord_flip() + scale_y_reverse(expand=c(0.2, 0)) + 
     theme(axis.line.y=element_blank(),
           axis.ticks.y=element_blank(),
@@ -116,8 +114,10 @@ clustering_and_cophenetic <- function(dat_thresh_red_path, ab_thresh, method_c, 
                      ncol(dat_thresh_red_path),
                      " sp (thresh = ", as.numeric(ab_thresh),
                      " ; method = ",
-                     method_c,")"))
-  
+                     method_c,")")) 
+ #+ geom_hline(yintercept = 0.2535)
+ 
+ aa 
   
  ggsave(clean_clust_path, aa, width = 6, height = 8)
 
