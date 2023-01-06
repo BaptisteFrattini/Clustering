@@ -7,6 +7,7 @@ campain_id|stem|ce8f67a879f14bfa|11b073332028455e|ef46db3751d8e999|-271504171||t
 clust_and_coph|stem|327d7645f2174a24|0800e4a19aa52847|b0f12073932e2c14|1526930214||t19363.5964258815s|f3963c450082b208|143|rds|local|vector|||7.89||
 clust_method|stem|d5da47e79cd98108|72ba32dbedf0968d|ef46db3751d8e999|-1679389730||t19361.5996998475s|a44f74ecaf054496|60|rds|local|vector|||0||
 clustering_and_cophenetic|function|78e35881dad28ccd|||||||||||||||
+coldiss|function|1afee6d9f5ff500f|||||||||||||||
 data_arms|function|c7a51c47e865cbf1|||||||||||||||
 data_red|function|1db6883e9a9f3d4b|||||||||||||||
 data_split|function|f8fb291fde240fe6|||||||||||||||
@@ -20,6 +21,8 @@ loop_clust|stem|4ed266ad29bc665d|7791bdccb0e9df07|5a815db34e541c18|869700915||t1
 mean_arms|stem|65c4f153fe6fd43f|4c18ad8e078c4fde|aaf0e6812586517f|-2043351993|C:/Users/bapti/OneDrive/Documents/R-projects/Clustering/data/derived-data/dat_red_99.csv|t19363.5963344162s|15965a829462511b|11032|file|local|vector|||0.1||
 mean_by_arms|function|2b4e790eb3beb461|||||||||||||||
 metadata_data|stem|4277115364fc8aa2|1c4887c85fc6a0c5|6ae4196abd5383cc|970554103|C:/Users/bapti/OneDrive/Documents/R-projects/Clustering/data/derived-data/data_RUNA.csv*C:/Users/bapti/OneDrive/Documents/R-projects/Clustering/data/derived-data/metadata_RUNA.csv|t19362.6140717871s|908abe6779d5cfd3|160674|file|local|vector|||0.12||
+north_south_coldiss|function|d578632ea8ae95ab|||||||||||||||
+NS_coldiss|stem|9c1148f84114c01d|49527fee2f5c8806|d0c3db268d03a728|-1263174724||t19363.6604549411s|e209d753280b6d62|157|rds|local|vector|||1.31||
 pairwise.adonis|function|78454cfa6ec45f2a|||||||||||||||
 pca_function|function|ed9ea362276c1450|||||||||||||||
 pca_phyl|stem|266273438466efae|c81e03e03929cf79|c0b9e325fff7ce08|1085494655||t19363.6319260759s|4859fc503e8e9e17|155|rds|local|vector|||1.97||

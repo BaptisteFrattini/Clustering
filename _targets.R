@@ -42,4 +42,8 @@ list(
   ,tar_target(pca_phyl, pca_phylum(dat_thresh_red_path = mean_arms,
                                    ab_thresh = ab_thresh,
                                    arms_id = campain_id))
+  
+  ,tar_target(NS_coldiss, north_south_coldiss(dat_thresh_red_path = mean_arms,
+                                   ab_thresh = ab_thresh,
+                                   arms_id = campain_id))
 )
