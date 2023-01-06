@@ -9,11 +9,10 @@
 #'
 
 
-pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
+pca_phylum <- function(dat_thresh_red_path, ab_thresh, arms_id) {
   
   #dat_thresh_red_path = targets::tar_read(mean_arms)
   #ab_thresh = targets::tar_load("ab_thresh") 
-  #method_c = targets::tar_load("clust_method") 
   #arms_id = targets::tar_load("campain_id") 
   
   dat_thresh_red_path <- read.csv(dat_thresh_red_path, 
@@ -24,6 +23,10 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   par(mfrow = c(2,2))
   #### Bryozoa ####
   
+  PCA_bryo_name <- paste0("PCA_bryo_", ab_thresh, "_", arms_id, ".pdf")
+  PCA_bryo_path <- here::here("outputs/PCA", PCA_bryo_name)
+  pdf(file =  PCA_bryo_path, width = 10, height = 10)
+
   bryo <- grepl("bryo",colnames(matrix.hel))
   matrix.h.bryo <- matrix.hel[,bryo]
   
@@ -31,18 +34,27 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   
   factoextra::fviz_pca_biplot(res.pca)
  
-  
+  dev.off()
   #### Ascidiacea ####
+  
+  PCA_asc_name <- paste0("PCA_asc_", ab_thresh, "_", arms_id, ".pdf")
+  PCA_asc_path <- here::here("outputs/PCA", PCA_asc_name)
+  pdf(file =  PCA_asc_path, width = 10, height = 10)
   
   asc <- grepl("asc",colnames(matrix.hel))
   matrix.h.asc <- matrix.hel[,asc]
   
   res.pca <- FactoMineR::PCA(matrix.h.asc, ncp = 3, graph = FALSE)
   
-  plot <- factoextra::fviz_pca_biplot(res.pca)
-  plot
+  factoextra::fviz_pca_biplot(res.pca)
+  
+  dev.off()
   
   #### Porifera ####
+  
+  PCA_por_name <- paste0("PCA_por_", ab_thresh, "_", arms_id, ".pdf")
+  PCA_por_path <- here::here("outputs/PCA", PCA_por_name)
+  pdf(file =  PCA_por_path, width = 10, height = 10)
   
   por <- grepl("_spo",colnames(matrix.hel))
   matrix.h.por <- matrix.hel[,por]
@@ -50,10 +62,15 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   res.pca <- FactoMineR::PCA(matrix.h.por, ncp = 3, graph = FALSE)
   
  
-  plot <- factoextra::fviz_pca_biplot(res.pca)
-  plot
+  factoextra::fviz_pca_biplot(res.pca)
+  
+  dev.off()
   
   #### Foraminifera ####
+  PCA_for_name <- paste0("PCA_for_", ab_thresh, "_", arms_id, ".pdf")
+  PCA_for_path <- here::here("outputs/PCA", PCA_for_name)
+  pdf(file =  PCA_for_path, width = 10, height = 10)
+  
   
   foram <- grepl("_for",colnames(matrix.hel))
   matrix.h.foram <- matrix.hel[,foram]
@@ -61,8 +78,9 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   res.pca <- FactoMineR::PCA(matrix.h.foram, ncp = 3, graph = FALSE)
   
   
-  plot <- factoextra::fviz_pca_biplot(res.pca)
-  plot
+ factoextra::fviz_pca_biplot(res.pca)
+
+ dev.off()
   
   #### MSP pool ####
   
@@ -82,5 +100,5 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
   plot <- factoextra::fviz_pca_biplot(res.pca)
   plot
   
-  return()
+  return(c(PCA_bryo_path, PCA_asc_path,  PCA_por_path, PCA_for_path))
 }

@@ -22,9 +22,10 @@ mean_by_arms|function|2b4e790eb3beb461|||||||||||||||
 metadata_data|stem|4277115364fc8aa2|1c4887c85fc6a0c5|6ae4196abd5383cc|970554103|C:/Users/bapti/OneDrive/Documents/R-projects/Clustering/data/derived-data/data_RUNA.csv*C:/Users/bapti/OneDrive/Documents/R-projects/Clustering/data/derived-data/metadata_RUNA.csv|t19362.6140717871s|908abe6779d5cfd3|160674|file|local|vector|||0.12||
 pairwise.adonis|function|78454cfa6ec45f2a|||||||||||||||
 pca_function|function|ed9ea362276c1450|||||||||||||||
-pca_phylum|function|8db84774c5731d5a|||||||||||||||
-pw_adonis|function|e504ca5f3b8e5695|||||||||||||||
-pwa|stem|29a87bea0222a0a0|7ed66383c8aebbdb|ff8b0b79cc777946|-1505165601||t19363.5964360078s|9d0b71d7308478d8|1268|rds|local|vector|||0.86||
+pca_phyl|stem|266273438466efae|c81e03e03929cf79|c0b9e325fff7ce08|1085494655||t19363.6319260759s|4859fc503e8e9e17|155|rds|local|vector|||1.97||
+pca_phylum|function|c2af95b9ba48ed8d|||||||||||||||
+pw_adonis|function|9f30c95afe6711fd|||||||||||||||
+pwa|stem|29a87bea0222a0a0|3880cecfabce1ec9|18f7a717e36fe383|-1505165601||t19363.5964360078s||1268|rds|local|vector|||0.02||file doit être une chaîne de caractères ou une connexion
 raw_data|stem|0b16ab7a1a96daba|af6c01ae4d5d454c|ef46db3751d8e999|-979620141|data/raw-data/Data_sans_UNAV-NR-OROS.csv|t19362.6138584091s|b2c1f76b113cb226|265414|file|local|vector|||0||
 split_clean_data_arms|function|fdd0d10748b8874b|||||||||||||||
 split_data|stem|35f1f55ee6f18d87|1c4887c85fc6a0c5|586542a16f9a8efb|1304765126|/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/data_RUNA.csv*/Users/baptistefrattini/Documents/M2 BEST/Stage/Analyse photo/Analyse_2022/R PROJECT/Clustering/data/derived-data/metadata_RUNA.csv|t19327.5836279162s|9ca6500e11936fd5|164930|file|local|vector|||0.148||

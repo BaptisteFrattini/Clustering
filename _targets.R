@@ -32,12 +32,14 @@ list(
                                method_c = clust_method,
                                arms_id = campain_id))
   
-  ,tar_target(pwa, pw_adonis(dat_thresh_red_path = mean_arms,
-                             ab_thresh = ab_thresh,
-                             arms_id = campain_id))
+  #,tar_target(pwa, pw_adonis(pca_phylum))
   
   ,tar_target(betadiv, decomp_b_div(dat_thresh_red_path = mean_arms,
                                     ab_thresh = ab_thresh,
                                     arms_id = campain_id,
                                     meta_and_data = metadata_data))
+  
+  ,tar_target(pca_phyl, pca_phylum(dat_thresh_red_path = mean_arms,
+                                   ab_thresh = ab_thresh,
+                                   arms_id = campain_id))
 )

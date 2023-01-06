@@ -27,12 +27,13 @@ pw_adonis <- function(dat_thresh_red_path, ab_thresh, arms_id){
   
   pwa <- pairwise.adonis(matrix.dist, vector, p.adjust.m = "none")
   pwa <- as.data.frame(pwa)
+  pwa_path <- paste0("outputs/df_pwa_",ab_thresh,"_", arms_id, ".csv")
   write.table(pwa, 
-              file = paste0("outputs/df_pwa_",ab_thresh,"_", arms_id, ".csv"),
+              file = pwa_path,
               dec = ",", 
               sep = ";",
               row.names = FALSE)
   
-  return(pwa)
+  return(pwa_path)
   
 }
