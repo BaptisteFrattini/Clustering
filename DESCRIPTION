@@ -33,7 +33,10 @@ Imports:
   plyr,
   FactoMineR,
   gclus,
-  sets
+  sets,
+  ade4,
+  betapart,
+  geosphere
   
   
   

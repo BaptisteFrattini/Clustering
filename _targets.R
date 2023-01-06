@@ -35,4 +35,9 @@ list(
   ,tar_target(pwa, pw_adonis(dat_thresh_red_path = mean_arms,
                              ab_thresh = ab_thresh,
                              arms_id = campain_id))
+  
+  ,tar_target(betadiv, decomp_b_div(dat_thresh_red_path = mean_arms,
+                                    ab_thresh = ab_thresh,
+                                    arms_id = campain_id,
+                                    meta_and_data = metadata_data))
 )

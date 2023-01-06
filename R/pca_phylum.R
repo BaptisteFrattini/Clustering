@@ -20,24 +20,67 @@ pca_phylum <- function(dat_thresh_red_path, ab_thresh, method_c, arms_id) {
                                   header = TRUE,
                                   row.names = 1)
   matrix.hel <- vegan::decostand(dat_thresh_red_path, "hellinger")
+  matrix.hel <- dat_thresh_red_path
+  par(mfrow = c(2,2))
+  #### Bryozoa ####
   
-  res.pca <- FactoMineR::PCA(matrix.hel, ncp = 3, graph = FALSE)
+  bryo <- grepl("bryo",colnames(matrix.hel))
+  matrix.h.bryo <- matrix.hel[,bryo]
+  
+  res.pca <- FactoMineR::PCA(matrix.h.bryo, ncp = 3, graph = FALSE)
+  
+  factoextra::fviz_pca_biplot(res.pca)
+ 
+  
+  #### Ascidiacea ####
+  
+  asc <- grepl("asc",colnames(matrix.hel))
+  matrix.h.asc <- matrix.hel[,asc]
+  
+  res.pca <- FactoMineR::PCA(matrix.h.asc, ncp = 3, graph = FALSE)
+  
+  plot <- factoextra::fviz_pca_biplot(res.pca)
+  plot
+  
+  #### Porifera ####
+  
+  por <- grepl("_spo",colnames(matrix.hel))
+  matrix.h.por <- matrix.hel[,por]
+  
+  res.pca <- FactoMineR::PCA(matrix.h.por, ncp = 3, graph = FALSE)
+  
+ 
+  plot <- factoextra::fviz_pca_biplot(res.pca)
+  plot
+  
+  #### Foraminifera ####
+  
+  foram <- grepl("_for",colnames(matrix.hel))
+  matrix.h.foram <- matrix.hel[,foram]
+  
+  res.pca <- FactoMineR::PCA(matrix.h.foram, ncp = 3, graph = FALSE)
   
   
   plot <- factoextra::fviz_pca_biplot(res.pca)
+  plot
+  
+  #### MSP pool ####
+  
+  matrix.hel.red <- matrix.hel[ , -grep("_for|_spo|asc|_bryo", colnames(matrix.hel))]
+  
+  foram.mean <- rowSums(matrix.h.foram)
+  spo.mean <- rowSums(matrix.h.por)
+  asc.mean <- rowSums(matrix.h.asc)
+  bryo.mean <-rowSums(matrix.h.bryo)
+
+  matrix.msp.pool <- as.data.frame(cbind(matrix.hel.red,foram.mean, spo.mean, asc.mean, bryo.mean))
+  sum(matrix.msp.pool[1,])
+  
+  res.pca <- FactoMineR::PCA(matrix.msp.pool, ncp = 3, graph = FALSE)
   
   
-  res.hcpc <- FactoMineR::HCPC(res.pca, nb.clust = 5,  graph = TRUE)
+  plot <- factoextra::fviz_pca_biplot(res.pca)
+  plot
   
-  
-  
-  factoextra::fviz_cluster(res.hcpc,
-                           repel = TRUE,            # Evite le chevauchement des textes
-                           show.clust.cent = TRUE, # Montre le centre des clusters
-                           palette = "jco",         # Palette de couleurs, voir ?ggpubr::ggpar
-                           ggtheme = ggplot2::theme_minimal(),
-                           main = "Factor map"
-  )
-  
-  
+  return()
 }
