@@ -46,4 +46,9 @@ list(
   ,tar_target(NS_coldiss, north_south_coldiss(dat_thresh_red_path = mean_arms,
                                    ab_thresh = ab_thresh,
                                    arms_id = campain_id))
+  
+  ,tar_target(rda_intra, fun_rda_intra(meta_and_data = metadata_data,
+                                       ab_thresh = ab_thresh,
+                                       arms_id = campain_id,
+                                       dat_thresh_path = dattresh))
 )
